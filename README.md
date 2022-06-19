@@ -32,7 +32,6 @@
 
 ### Association
 
-- belongs_to :user
 - belongs_to :purchase_record
 
 ## products テーブル
@@ -46,7 +45,7 @@
 | shipping_fee_id     | integer    | null: false                    |
 | prefecture_id       | integer    | null: false                    |
 | date_of_shipping_id | integer    | null: false                    |
-| price               | string     | null: false                    |
+| price               | integer    | null: false                    |
 | user                | references | null: false, foreign_key: true |
 
 ### Association
@@ -59,7 +58,6 @@
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
 | user        | references | null: false, foreign_key: true |
-| destination | references | null: false, foreign_key: true |
 | product     | references | null: false, foreign_key: true |
 
 
