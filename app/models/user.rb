@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :products
-  has_many :purchase_records
+  #has_many :products
+  #has_many :purchase_records
 
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i #半角英数のバリデーション
   VALID_PASSWORD_REGEX.freeze #freezeで変数の内容を固定
@@ -13,7 +13,7 @@ class User < ApplicationRecord
   FULL_WIDTH_KANA = "is invalid. Input full-width katakana characters" #全角カナ文字のバリデーション
 
   validates :nickname, presence:true
-  validates :password,length: { minimum:6, allow_blank: true },format:{with: VALID_PASSWORD_REGEX, message:"is invalid. Include both letters and numbers" }
+  validates :password, format:{with: VALID_PASSWORD_REGEX, message:"is invalid. Include both letters and numbers" }
   #ここから全角文字のバリデーション
   validates :first_name, presence:true, format:{with: /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/,message:FULL_WIDTH}
   validates :last_name, presence:true, format:{with: /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/,message:FULL_WIDTH}
