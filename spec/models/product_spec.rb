@@ -11,6 +11,11 @@ RSpec.describe Product, type: :model do
       end
     end
     context '商品が出品できない場合' do
+      it 'ユーザー情報がない場合は登録できない' do
+        @product.user = nil
+        @product.valid?
+        expect(@product.errors.full_messages).to include('User must exist')
+      end
       it 'product_nameが空では保存できない' do
         @product.product_name = ''
         @product.valid?
@@ -49,7 +54,7 @@ RSpec.describe Product, type: :model do
       it 'priceが空だと保存できない' do
         @product.price = ''
         @product.valid?
-        expect(@product.errors.full_messages).to include("Price is not a number", "Price is invalid")
+        expect(@product.errors.full_messages).to include("Price can't be blank")
       end
       it 'priceが300未満だと保存できない' do
         @product.price = '299'

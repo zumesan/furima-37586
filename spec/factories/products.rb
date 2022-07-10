@@ -14,12 +14,4 @@ FactoryBot.define do
       message.image.attach(io: File.open('public/images/IMG_0251.jpeg'), filename: 'IMG_0251.jpeg')
     end
   end
-
-  #trait :image do
-    #after(:build) do |product|
-      #File.open("#{Rails.root}/public/images/IMG_0251.jpeg") do |f|
-        #item.images.attach(io: f, filename: "IMG_0251.jpeg", content_type: 'image/jpeg')
-      #end
-    #end
-  #end
 end
