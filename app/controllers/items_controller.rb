@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create] #ログインしていないユーザーが出品しようとすると、ログイン画面に遷移する
 
   def index
-    
+    @products = Product.all.order(created_at: :desc)
   end
 
 
