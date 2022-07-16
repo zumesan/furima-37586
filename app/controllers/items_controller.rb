@@ -26,12 +26,13 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    unless user_signed_in?
+    unless user_signed_in? || current_user == @product.user
       redirect_to root_path
     end
   end
 
   def update
+    product = Product.find(params[:id])
     if product.update(product_params)
       redirect_to product_path(@product)
     else
@@ -47,7 +48,7 @@ class ItemsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:product_name, :product_info, :price, :category_id, :state_id, :shipping_fee_id, :prefecture_id, :date_of_shipping_id, :image).merge(user_id: current_user.id)
+    params.require(:product).permit(:product_name, :product_info, :price, :category_id, :state_id, :shipping_fee_id, :prefecture_id, :date_of_shipping_id, :image).merge(user_id: current_user.id) #permitメソッドで、（）内の情報の編集を許可する
   end
 
   def contributor_confirmation
