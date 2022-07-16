@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_product, only: [:show, :edit]
   before_action :authenticate_user!, only: [:new, :create] #ログインしていないユーザーが出品しようとすると、ログイン画面に遷移する
-  before_action :contributor_confirmation, only: :edit
+  before_action :contributor_confirmation, only: [:edit, :update]
 
   def index
     @products = Product.all.order(created_at: :desc)
@@ -34,7 +34,7 @@ class ItemsController < ApplicationController
   def update
     product = Product.find(params[:id])
     if product.update(product_params)
-      redirect_to product_path(@product)
+      redirect_to item_path(@product)
     else
       render :edit
     end
