@@ -13,5 +13,8 @@ FactoryBot.define do
     first_name_kana       {person.first.katakana}
     birth_date            {Faker::Date.between(from:'1930-01-01',to:'2022-01-01')}
 
+    association :product
+    association :purchase_record
+
   end
 end

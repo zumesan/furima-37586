@@ -11,7 +11,9 @@ class OrdersController < ApplicationController
   def create
     @purchase_destination = PurchaseDestination.new(record_params)
     if @purchase_destination.valid?
-      redirect_to root_path
+      pay_item
+      @purchase_destination.save
+      return redirect_to root_path
     else
       render 'index'
     end
@@ -20,16 +22,25 @@ class OrdersController < ApplicationController
 
   private
 
-  def record_params
-    params.require(:purchase_destination).permit(:post_number, :prefecture_id, :municiplity, :address, :building_name, :phone_number)
+  def set_product
+   @product = Product.find(params[:item_id])
   end
 
-  def set_product
-    @product = Product.find(params[:item_id])
+  def record_params
+    params.require(:purchase_destination).permit(:post_number, :prefecture_id, :municipality, :address, :building_name, :phone_number).merge(token: params[:token],user_id: current_user.id, product_id: params[:item_id])
   end
 
   def contributor_confirmation
     redirect_to root_path if current_user == @product.user
+  end
+
+  def pay_item
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]  #環境変数で設定したPAY.JPテスト秘密鍵
+    Payjp::Charge.create(
+      amount: @product.price,         #商品の値段
+      card: record_params[:token],    # カードトークン
+      currency: 'jpy'                 # 通貨の種類（日本円）
+    )
   end
 
 end
