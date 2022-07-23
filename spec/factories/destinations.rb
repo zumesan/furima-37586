@@ -5,9 +5,9 @@ FactoryBot.define do
     municipality          {"大市"}
     address               {"小町9-1"}
     building_name         {""}
-    phone_number          {"0120-123-456"}
+    phone_number          {"09012345678"}
 
-    association :purchase_record
+    #association :purchase_record
 
   end
 end

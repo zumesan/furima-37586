@@ -132,7 +132,7 @@
           <%= link_to item_path(item.id), method: :get do %>
             <div class='item-img-content'>
               <%= image_tag item.image.variant(resize: '135.3x135.3'), class: "item-img" %>
-              <% if item.blank? %>
+              <% if item.purchase_record_id.present? %>
                 <div class='sold-out'>
                   <span>Sold Out!!</span>
                 </div>

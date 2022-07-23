@@ -19,6 +19,8 @@ class PurchaseDestination
   def save #テーブルへの保存の記述
     purchase_record = PurchaseRecord.create(user_id: user_id, product_id: product_id) #ordersコントローラーで定義されたuser_idとproduct_idを取得し、変数purchase_recordに格納
     Destination.create(post_number: post_number, prefecture_id: prefecture_id, municipality:municipality, address:address, building_name: building_name, phone_number: phone_number, purchase_record_id: purchase_record.id)
+    @purchase = Product.find(product_id)
+    @purchase.update(purchase_record_id: purchase_record.id)
   end
 
 end

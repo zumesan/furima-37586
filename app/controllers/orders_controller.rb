@@ -5,6 +5,9 @@ class OrdersController < ApplicationController
   before_action :contributor_confirmation, only: [:index, :create]
 
   def index
+    if @product.purchase_record_id.present?
+      redirect_to root_path
+    end
     @purchase_destination = PurchaseDestination.new
   end
 

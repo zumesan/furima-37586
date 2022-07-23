@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_18_013949) do
+ActiveRecord::Schema.define(version: 2022_07_22_091102) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 2022_07_18_013949) do
     t.integer "shipping_fee_id"
     t.integer "prefecture_id"
     t.integer "date_of_shipping_id"
+    t.bigint "purchase_record_id"
+    t.index ["purchase_record_id"], name: "index_products_on_purchase_record_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
@@ -90,6 +92,7 @@ ActiveRecord::Schema.define(version: 2022_07_18_013949) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "destinations", "purchase_records"
+  add_foreign_key "products", "purchase_records"
   add_foreign_key "products", "users"
   add_foreign_key "purchase_records", "products"
   add_foreign_key "purchase_records", "users"
