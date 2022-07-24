@@ -75,7 +75,7 @@ RSpec.describe PurchaseDestination, type: :model do
         @purchase_destination.valid?
         expect(@purchase_destination.errors.full_messages).to include("Post number is invalid")
       end
-      it 'prefecture_idが1以外でなければ登録できない' do
+      it 'prefecture_idを選択しなければなければ登録できない' do
         @purchase_destination.prefecture_id = '1'
         @purchase_destination.valid?
         expect(@purchase_destination.errors.full_messages).to include("Prefecture Select")
