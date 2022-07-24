@@ -8,8 +8,7 @@ FactoryBot.define do
     prefecture_id         {Faker::Number.between(from: 2, to: 48)}
     date_of_shipping_id   {Faker::Number.between(from: 2, to: 4)}
     price                 {Faker::Number.between(from: 300, to: 9999999)}
-    association :user
-    #association :purchase_record
+    association :user #このモデルが所属する親モデル名
 
     after(:build) do |message|
       message.image.attach(io: File.open('public/images/IMG_0251.jpeg'), filename: 'IMG_0251.jpeg')

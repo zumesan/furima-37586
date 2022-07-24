@@ -7,9 +7,9 @@ class PurchaseDestination
 
   with_options presence: true do
     validates :token
-    validates :post_number, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "Include hyphen(-)", allow_blank:true} 
+    validates :post_number, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, allow_blank:true}
     validates :prefecture_id ,numericality: { other_than: 1 ,message: "Select" }
-    validates :municipality, format: {with: FULL_WIDTH_CHARACTERS, message:"is invalid. Input full-width characters", allow_blank:true}
+    validates :municipality
     validates :address
     validates :phone_number, numericality: {message: "Input only number"}, format:{ with: VALID_PHONE_REGEX, allow_blank:true }
     validates :user_id
