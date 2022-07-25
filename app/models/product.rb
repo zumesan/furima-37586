@@ -7,7 +7,7 @@ class Product < ApplicationRecord
   belongs_to :shipping_fee
   belongs_to :prefecture
   belongs_to :date_of_shipping
-  #has_one :purchase_record
+  has_one :purchase_record
   has_one_attached :image
 
   #空の投稿を保存できないようにする

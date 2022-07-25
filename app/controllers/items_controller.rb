@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_product, except: [:index, :new, :create]
-  before_action :authenticate_user!, except: [:index, :show] #ログインしていないユーザーが出品しようとすると、ログイン画面に遷移する。except:で指定したアクション以外でメソッドを実施
+  before_action :authenticate_user!, except: [:index, :show] #ログインしていないユーザーが出品しようとすると、ログイン画面に遷移する。※except:・・・指定したアクション以外でメソッドを実施
   before_action :contributor_confirmation, only: [:edit, :update, :destroy]
 
   def index
@@ -26,7 +26,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
-
+    if @product.purchase_record_id.present?
+      redirect_to root_path
+    end
   end
 
   def update
@@ -56,6 +58,7 @@ class ItemsController < ApplicationController
 
   def contributor_confirmation
     redirect_to root_path unless current_user == @product.user
+    
   end
 
 end
