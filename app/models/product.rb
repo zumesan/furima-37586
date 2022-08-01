@@ -9,6 +9,7 @@ class Product < ApplicationRecord
   belongs_to :date_of_shipping
   has_one :purchase_record
   has_one_attached :image
+  has_many :comments
 
   #空の投稿を保存できないようにする
   validates :product_name, :product_info, presence: true
