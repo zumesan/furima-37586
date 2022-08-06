@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :products
   has_many :purchase_records
+  has_many :comments
 
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i #半角英数のバリデーションの値を変数に格納
   VALID_PASSWORD_REGEX.freeze #freezeで変数の内容を固定
