@@ -90,6 +90,16 @@
 }
 
 /* /商品画像 */
+.preview {
+
+}
+.preview-image {
+  height: 20vh;
+  width: 24vw;
+  min-height: 200px;
+  background-color: rgb(205, 202, 202);
+  object-fit: contain;
+}
 
 /* 商品名と商品説明 */
 .new-items {
