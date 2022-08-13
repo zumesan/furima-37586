@@ -63,6 +63,13 @@
 .or-text {
   font-size: 20px;
 }
+.other-images {
+  display: flex;
+}
+
+.other-image {
+  margin-right: 10px;
+}
 
 .item-destroy {
   background-color: lightgray;
