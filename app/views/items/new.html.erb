@@ -5,7 +5,7 @@
   </header>
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
-    <%= form_with model:@product, url: items_path, local: true do |f| %>
+    <%= form_with model:@product, id: 'item-image', url: items_path, local: true do |f| %>
 
     <%= render 'shared/error_messages', model: f.object %>
 
@@ -19,9 +19,9 @@
         <p>
           クリックしてファイルをアップロード
         </p>
-        <div id='previews'></div>
-        <%= f.file_field :image, id:"item-image" %> <%#画像を渡す%>
-      </div>
+        <div id='previews'></div> <%#プレビューを表示する%>
+          <%= f.file_field :images, name: 'product[images][]', data: {index: 0} %> <%#画像を渡す%>
+        </div>
     </div>
     <div class="new-items">
       <div class="weight-bold-text">
