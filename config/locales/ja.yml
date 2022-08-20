@@ -13,6 +13,16 @@ ja:
         email: "メールアドレス"
         password: "パスワード"
         birth_date: "生年月日"
+      product:
+        product_name: "商品名"
+        product_info: "商品の説明"
+        images: "画像"
+        category_id: "カテゴリー"
+        state_id: "商品の状態"
+        shipping_fee_id: "発送料の負担"
+        prefecture_id: "発送元の地域"
+        date_of_shipping_id: "発送までの日数"
+        price: "販売価格"
   devise:
     sessions:
       user:
