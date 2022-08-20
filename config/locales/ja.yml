@@ -1,4 +1,7 @@
 ja:
+  errors:
+    messages:
+      not_saved: "登録に失敗しました"
   activerecord:
     attributes:
       user:
@@ -10,3 +13,10 @@ ja:
         email: "メールアドレス"
         password: "パスワード"
         birth_date: "生年月日"
+  devise:
+    sessions:
+      user:
+        signed_out: 
+    failure:
+      user:
+        invalid: "必要事項を入力してください"
