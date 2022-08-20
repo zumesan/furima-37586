@@ -1,0 +1,41 @@
+ja:
+  errors:
+    messages:
+      not_saved: "登録に失敗しました"
+  activerecord:
+    attributes:
+      user:
+        nickname: "ニックネーム"
+        first_name: "名前"
+        last_name: "苗字"
+        first_name_kana: "名前（カナ）"
+        last_name_kana: "苗字（カナ）"
+        email: "メールアドレス"
+        password: "パスワード"
+        birth_date: "生年月日"
+      product:
+        product_name: "商品名"
+        product_info: "商品の説明"
+        images: "画像"
+        category_id: "カテゴリー"
+        state_id: "商品の状態"
+        shipping_fee_id: "発送料の負担"
+        prefecture_id: "発送元の地域"
+        date_of_shipping_id: "発送までの日数"
+        price: "販売価格"
+  activemodel:
+    attributes:
+      purchase_destination:
+        token: "クレジットカード情報"
+        post_number: "郵便番号"
+        prefecture_id: "都道府県"
+        municipality: "市区町村"
+        address: "番地"
+        phone_number: "電話番号"
+  devise:
+    sessions:
+      user:
+        signed_out: "ログアウトされました"
+    failure:
+      user:
+        invalid: "必要事項を入力してください"
