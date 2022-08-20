@@ -8,10 +8,10 @@ class PurchaseDestination
   with_options presence: true do
     validates :token
     validates :post_number, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, allow_blank:true}
-    validates :prefecture_id ,numericality: { other_than: 1 ,message: "Select" }
+    validates :prefecture_id ,numericality: { other_than: 1 ,message: "を選択してください" }
     validates :municipality
     validates :address
-    validates :phone_number, numericality: {message: "Input only number"}, format:{ with: VALID_PHONE_REGEX, allow_blank:true }
+    validates :phone_number, numericality: {message: "は半角数字で入力してください"}, format:{ with: VALID_PHONE_REGEX, allow_blank:true }
     validates :user_id
     validates :product_id
   end
