@@ -11,7 +11,7 @@ FactoryBot.define do
     association :user #このモデルが所属する親モデル名
 
     after(:build) do |message|
-      message.image.attach(io: File.open('public/images/IMG_0251.jpeg'), filename: 'IMG_0251.jpeg')
+      message.images.attach(io: File.open('public/images/IMG_0251.jpeg'), filename: 'IMG_0251.jpeg')
     end
   end
 end
